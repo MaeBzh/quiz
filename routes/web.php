@@ -12,7 +12,7 @@ Route::get('questions/{question}/edit', 'QuestionController@edit')->name('questi
 Route::put('questions/{question}/update', 'QuestionController@update')->name('questions.update');
 Route::delete('questions/{question}/destroy', 'QuestionController@destroy')->name('questions.destroy');
 
-Route::get('questions/{question}/answers', 'QuestionController@indexAnswer')->name('questions.answers.create');
+Route::get('questions/{question}/answers', 'QuestionController@indexAnswer')->name('questions.answers.index');
 Route::get('questions/{question}/answers/{answer}', 'QuestionController@showAnswer')->name('questions.answers.create');
 Route::get('questions/{question}/answers/create', 'QuestionController@createAnswer')->name('questions.answers.create');
 Route::post('questions/{question}/answers/store', 'QuestionController@storeAnswer')->name('questions.answers.store');
