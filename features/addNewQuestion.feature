@@ -5,11 +5,10 @@ Feature: addNewQuestion
   I need to be fill all required form's inputs
 
   Scenario: Creating a new question
-    Given the "question" field should contain "Quelle est la réponse ?"
-    And the "category" field should contains "test"
-    When I fill all required inputs
-    Then I should see my new question in the question's list
+    Given the "question | category | difficulty" field should contain "Quelle est la réponse ? | test | 1"
+    When I press "Add"
+    Then I should see text matching "La question a été créée"
 
-  Scenario: Displaying the list of all the questions
-    Given that I click on button "Questions"
-    Then I should see the list of all the questions
+  Scenario: Adding an answer
+    Given the "answer | category | difficulty" field should contain "Quelle est la réponse ? | test | 1"
+    When I press "A"

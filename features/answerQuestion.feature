@@ -5,13 +5,10 @@ Feature: answerQuestion
   I need to be able to answer a question
 
   Rules:
-  - I nedd to choose between 4 answers
+  - I need to choose between several answers
 
   Scenario: Answer a question
-    Given that I have the question "Que veut dire PHP ?"
-    When I click on button "A"
-    Then I should see "Welldone !"
-
-
-
+    Given I am on "public/games/$id"
+    When I should see "test?"
+    Then I press "Answer 1"
 
