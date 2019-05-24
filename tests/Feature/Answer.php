@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
-class QuestionTest extends TestCase
+class Answer extends TestCase
 {
     
     protected function setUp(): void

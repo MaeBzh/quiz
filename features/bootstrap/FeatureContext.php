@@ -35,7 +35,7 @@ class FeatureContext implements Context
      */
     public function iPress($arg1)
     {
-        throw new PendingException();
+        $this->iPress("twoPlayers");
     }
 
     /**
@@ -51,7 +51,7 @@ class FeatureContext implements Context
      */
     public function iAmOn($arg1)
     {
-        throw new PendingException();
+        $this->iAmOn("/quiz/public/");
     }
 
     /**
@@ -60,5 +60,13 @@ class FeatureContext implements Context
     public function iShouldSee($arg1)
     {
         throw new PendingException();
+    }
+
+    /**
+     * @Then I go to :arg1
+     */
+    public function iGoTo($arg1)
+    {
+        $this->iGoTo("/quiz/public/games/create");
     }
 }
