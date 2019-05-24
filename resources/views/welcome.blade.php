@@ -12,7 +12,7 @@
                 </a>
             </div>
             <div class="col">
-                <a href="{{ route('games.create') }}" class="btn btn-success btn-lg">
+                <a id="twoPlayers" href="{{ route('games.create') }}" class="btn btn-success btn-lg">
                     <h2>Two players</h2>
                 </a>
             </div>
