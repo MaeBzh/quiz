@@ -21,21 +21,21 @@ class RouteAnswerTest extends TestCase
 
     public function testRouteIndex()
     {
-        $response = $this->get('/answers/index');
+        $response = $this->get(route("questions.answers.index", 6));
 
         $response->assertStatus(200);
     }
 
     public function testRouteCreate()
     {
-        $response = $this->get('/answers/create');
+        $response = $this->get(route("questions.answers.create", 1));
 
         $response->assertStatus(200);
     }
 
     public function testRouteEdit()
     {
-        $response = $this->get('/answers/edit/1');
+        $response = $this->get(route("questions.answers.edit", [1, 1]));
 
         $response->assertStatus(200);
     }
@@ -43,10 +43,10 @@ class RouteAnswerTest extends TestCase
     public function testRouteDelete()
     {
         $bdd = mysqli_connect("localhost", "root",  "","quizz" );
-        $requete = $bdd->query("INSERT INTO answers (name, is_valid, question_id) VALUES ('test','1','2')");
+        $bdd->query("INSERT INTO answers (name, is_valid, question_id) VALUES ('test','1','2')");
 
         $this->id = $bdd->insert_id;
-        $response = $this->get('/answers/destroy/'.$this->id);
+        $response = $this->delete("questions.answers.destroy".$this->id);
 
         $response->assertStatus(302);
     }

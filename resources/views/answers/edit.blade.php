@@ -10,7 +10,7 @@
     <div class="col-lg-6 col-lg-offset-3">
         <h3>Edit Answer</h3>
         {!! Form::model($answer, [
-            'url' => route('update_answer', $answer),
+            'url' => route('questions.answers.edit', $answer, $answer->question),
             'method' => 'PUT'
         ]) !!}
         <div class="form-group">

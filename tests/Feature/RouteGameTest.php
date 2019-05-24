@@ -9,21 +9,21 @@ class RouteGameTest extends TestCase
 {
     public function testRouteIndex()
     {
-        $response = $this->get('/games');
+        $response = $this->get(route("games.index"));
 
         $response->assertStatus(200);
     }
 
     public function testRouteCreate()
     {
-        $response = $this->get('/games/create');
+        $response = $this->get(route("games.create"));
 
         $response->assertStatus(200);
     }
 
     public function testRouteEdit()
     {
-        $response = $this->get('/games/1/edit');
+        $response = $this->get(route("games.edit", 1));
 
         $response->assertStatus(200);
     }
