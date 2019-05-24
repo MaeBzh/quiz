@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Answer;
+use App\Question;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -21,21 +23,25 @@ class RouteAnswerTest extends TestCase
 
     public function testRouteIndex()
     {
-        $response = $this->get(route("questions.answers.index", 6));
-
+        $question = Question::create(['question' => 'test', 'category' => 'test', 'difficulty' => 5]);
+        $url = route("questions.answers.index", $question);
+        $response = $this->get($url);
         $response->assertStatus(200);
     }
 
     public function testRouteCreate()
     {
-        $response = $this->get(route("questions.answers.create", 1));
+        $question = Question::create(['question' => 'test', 'category' => 'test', 'difficulty' => 5]);
+        $response = $this->get(route("questions.answers.create", $question));
 
         $response->assertStatus(200);
     }
 
     public function testRouteEdit()
     {
-        $response = $this->get(route("questions.answers.edit", [1, 1]));
+        $question = Question::create(['question' => 'test', 'category' => 'test', 'difficulty' => 5]);
+        $answer = Answer::create(['name' => 'test', 'is_valid' => 1]);
+        $response = $this->put(route("questions.answers.edit", $question, $answer));
 
         $response->assertStatus(200);
     }
@@ -46,7 +52,7 @@ class RouteAnswerTest extends TestCase
         $bdd->query("INSERT INTO answers (name, is_valid, question_id) VALUES ('test','1','2')");
 
         $this->id = $bdd->insert_id;
-        $response = $this->delete("questions.answers.destroy".$this->id);
+        $response = $this->delete("questions.answers.destroy", [2, $this->id]);
 
         $response->assertStatus(302);
     }

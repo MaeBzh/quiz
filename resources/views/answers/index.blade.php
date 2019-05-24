@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 mb-4">
-                    <a href="{{ route('questions.answers.create') }}" class="btn btn-success">Add a answer</a>
+                    <a href="{{ route('questions.answers.create', $question) }}" class="btn btn-success">Add a answer</a>
                 </div>
             </div>
             <div class="row">
@@ -32,7 +32,7 @@
                             <th>Delete</th>
                         </thead>
                         <tbody>
-                        @foreach($answer as $answer)
+                        @foreach($answers as $answer)
                             <tr>
                                 <td>{{$answer->id}}</td>
                                 <td>{{$answer->name}}</td>

@@ -17,9 +17,9 @@ class AnswerTest extends TestCase
 
     public function testCreateNewAnswer()
     {
-
-        $data = ["name" => "Nooooooooooon", "is_valid" => 1, "question_id" => 1];
-        $this->post(route("questions.answers.store", $data));
+        $data = ["name" => "Nooooooooooon", "is_valid" => 1];
+        $question = Question::create(['question' => 'test', 'category' => 'test', 'difficulty' => 5]);
+        $this->post(route("questions.answers.store", $question), $data);
         $this->assertDatabaseHas("answers", $data);
     }
 
